@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="ff">
+        <table border="1">
+            <tr>
+                <th>ID : </th>
+                <td><input name="m_id" placeholder="아이디를 입력해주세요"></td>
+            </tr>
+            <tr>
+                <th>AGE : </th>
+                <td><input name="m_age" placeholder="나이를 입력하세요"></td>
+            </tr>
+            <tr>
+                <th>PWD : </th>
+                <td><input type="password" name="m_pwd" placeholder="비밀번호를 입력하세요"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="button" value="전송">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <form action="">
+        <!-- forms의 인덱스 1번 -->
+    </form>
+
+    <script>
+        function check(){
+        //forms : 현재 html문서 내의 form들을 순차적으로 배열로 정의해둔 상태
+        //body에서 form태그가 여러개 존재할 경우 forms배열에 0,1,2등의 인덱스로 form태그를 부여한다.
+            // let f = document.forms[0]
+
+            //form태그에 준 이름을 가지고 검색할 수 있다.
+            let f = document.ff
+        
+        //form태그에서 m_id라는 name속성을 가지고 있는 태그의 값을 가져온다.
+            let myId = f.m_id.value
+
+        //submit으로 바로 제출을 하게 되면
+        //형식에 맞지 않는 내용도 전달해버리기 때문에
+        //불필요하게 데이터를 전송하게 된다.
+            if(myId.length == 0){
+                alert('아이디를 입력하세요')
+                return //if문에서 return은 메서드를 빠져나가는 역할
+            }
+
+            let myAge = f.m_age.value
+            if(myAge == ''){
+                alert("나이를 입력해주세요")
+                return
+            }
+
+            let myPwd = f.m_pwd.value
+            if(myPwd == ''){
+                alert("비밀번호를 입력해주세요")
+                return
+            }
+
+            //목적지
+            f.action = "login.html"
+
+            //전송방식
+            f.method = 'get'
+
+            //입력된 데이터를 전송
+            //f가 가진 name속성이 action으로 지정해둔 페이지의
+            //파라미터로 전달
+            f.submit()
+        }
+
+
+        let button = document.querySelector("input[type='button']")
+        button.addEventListener("click",function(e){
+            check()
+        })
+
+    </script>
+</body>
+</html>
