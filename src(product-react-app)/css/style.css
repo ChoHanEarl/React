@@ -1,0 +1,20 @@
+.container{
+    height: 100vh;
+    /* color: blue; */
+    /* border : 5px solid blue; */
+    display: flex;
+    justify-content: center;  /* 수평 가운데 정렬 */
+    align-items: center;      /* 수직 가운데 정렬 */
+    flex-direction: column;  /* 세로 방향 정렬 */
+};
+
+table{
+    color: blue;
+    size: 24px;
+    text-align: center;
+    background: #f0f0f0;
+}
+
+button{
+    width: 50%;
+}
