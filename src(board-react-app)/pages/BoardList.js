@@ -21,9 +21,21 @@ const BoardList = () => {
     // 전체 페이지 수를 관리
     const [totalPages, setTotalPages] = useState(1)
 
+    const getBoardList = async() => {
+        try {
+            // api/board => Spring의 boardcontroller에 있는 주소
+            const response = await axios.get('http://localhost:9090/api/board/all')
+            console.log(response.data)
+            setBoardList(response.data)
+            setTotalPages(Math.ceil(boardList.length/postsPerPage))
+        } catch (error) {
+            
+        }
+    } 
     useEffect(() => {
-        setBoardList(boardList)
-        setTotalPages(Math.ceil(boardList.length/postsPerPage)) //총 페이지 수 계산
+        getBoardList()
+        //setBoardList(boardList)
+        //setTotalPages(Math.ceil(boardList.length/postsPerPage)) //총 페이지 수 계산
     }, [postsPerPage, boardList])
 
     // 현재 페이지에서 보여줄 게시글의 마지막 인덱스 계산
